@@ -1,10 +1,18 @@
 import { Configuration, OpenAIApi } from "openai";
 
+// config
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+// create OpenAIApi object
 const openai = new OpenAIApi(configuration);
 
+/**
+ * main function
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export default async function (req, res) {
   if (!configuration.apiKey) {
     res.status(500).json({
@@ -26,6 +34,7 @@ export default async function (req, res) {
   }
 
   try {
+    // call createCompletion function
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(animal),
@@ -48,11 +57,14 @@ export default async function (req, res) {
   }
 }
 
+/**
+ * generatePrompt function
+ * @param {*} animal 
+ * @returns 
+ */
 function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+  const capitalizedAnimal = animal[0].toUpperCase() + animal.slice(1).toLowerCase();
   return `Suggest three names for an animal that is a superhero.
-
 Animal: Cat
 Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
 Animal: Dog
