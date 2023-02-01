@@ -45,3 +45,4 @@ You should now be able to access the app at [http://localhost:3000](http://local
 1. [Examples](https://beta.openai.com/examples)
 2. [QuickStart](https://beta.openai.com/docs/quickstart/build-your-application)
 3. [【GitHub】openai-quickstart-node](https://github.com/openai/openai-quickstart-node)
+4. [サンプル動画]()
